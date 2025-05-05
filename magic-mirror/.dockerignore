@@ -1,3 +1,0 @@
-# Ignore config during build so edits don't bust cache
-# config/*
-# css/*
