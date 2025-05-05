@@ -9,7 +9,5 @@ services:
     volumes:
       # Mount the X11 socket so the container can talk to the host X?server
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ./config:/app/config
-      - ./css:/app/css
     ipc: host        # bigger shared?memory segment for Chrome
     network_mode: host    # simplest for dev; remove if you need isolation
