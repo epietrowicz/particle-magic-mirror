@@ -7,7 +7,7 @@ services:
       - DISPLAY=${DISPLAY}      # tells Chromium which screen to use
       - ELECTRON_DISABLE_SANDBOX=true  # needed if the container runs as root
     volumes:
-      # Mount the X11 socket so the container can talk to the host X?server
+      # Mount the X11 socket so the container can talk to the host X server
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-    ipc: host        # bigger shared?memory segment for Chrome
+    ipc: host        # bigger shared memory segment for Chrome
     network_mode: host    # simplest for dev; remove if you need isolation
