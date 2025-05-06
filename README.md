@@ -1,42 +1,4 @@
-Start up script:
-`nano /usr/local/bin/startup-script.sh`
+# Particle Magic Mirror Port
+This repository shows how to use the open source [Magic Mirror](https://github.com/MagicMirrorOrg/MagicMirror) project with [Particle for Linux](https://www.particle.io/linux/).
 
-```bash
-#!/bin/bash
-echo "Starting magic mirror..." >> ~/startup.log
-export DISPLAY=:0
-xhost +local:docker
-cd ~/particle-magic-mirror || exit 1
-~/bin/particle app run >> ~/app.log 2>&1
-echo "Started magic mirror project!" >> ~/startup.log
-```
-
-Make it executable:
-`sudo chmod +x /usr/local/bin/startup-script.sh`
-
-Create the service:
-`sudo nano /etc/systemd/system/startup.service`
-
-Paste the following:
-```bash
-[Unit]
-Description=Run my startup script after network is ready 
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=simple 
-ExecStart=/usr/local/bin/startup-script.sh
-User=eric
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable & start the service:
-```bash
-sudo systemctl daemon-reexec
-sudo systemctl enable startup.service
-sudo systemctl start startup.service
-```
+Particle for Linux allows you to easily push changes to your fleet of Linux devices from a host development computer. You can view the application status, connect via remote shell, and manage networks on the device all from the Particle Console. 
